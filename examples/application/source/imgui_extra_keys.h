@@ -22,13 +22,13 @@
     struct KeyTester_ ## Key                                                                        \
     {                                                                                               \
         template <typename T>                                                                       \
-        static int Get(typename std::enable_if<has_nested_ ## Key<ImGuiKey_>::value, T>::type*)     \
+        static int Get(typename std::enable_if<has_nested_ ## Key<ImGuiKey>::value, T>::type*)     \
         {                                                                                           \
             return T::Key;                                                                          \
         }                                                                                           \
                                                                                                     \
         template <typename T>                                                                       \
-        static int Get(typename std::enable_if<!has_nested_ ## Key<ImGuiKey_>::value, T>::type*)    \
+        static int Get(typename std::enable_if<!has_nested_ ## Key<ImGuiKey>::value, T>::type*)    \
         {                                                                                           \
             return -1;                                                                              \
         }                                                                                           \
@@ -39,10 +39,10 @@ DECLARE_KEY_TESTER(ImGuiKey_D);
 
 static inline int GetEnumValueForF()
 {
-    return KeyTester_ImGuiKey_F::Get<ImGuiKey_>(nullptr);
+    return KeyTester_ImGuiKey_F::Get<ImGuiKey>(nullptr);
 }
 
 static inline int GetEnumValueForD()
 {
-    return KeyTester_ImGuiKey_D::Get<ImGuiKey_>(nullptr);
+    return KeyTester_ImGuiKey_D::Get<ImGuiKey>(nullptr);
 }
