@@ -5254,6 +5254,10 @@ void ed::NodeBuilder::End()
     if (editorStyle.NodePadding.x != 0 || editorStyle.NodePadding.y != 0 || editorStyle.NodePadding.z != 0 || editorStyle.NodePadding.w != 0)
     {
         ImGui::EndGroup();
+        m_NodeDrawArea = ImGui_GetItemRect();
+        m_NodeDrawArea.Floor();
+        m_CurrentNode->m_DrawArea = m_NodeDrawArea;
+        
         ImGui::SameLine(0, editorStyle.NodePadding.z);
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
         ImGui::Dummy(ImVec2(0, 0)); // bump cursor at the end of the line and move to next one

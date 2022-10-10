@@ -382,6 +382,7 @@ struct Node final: Object
     NodeId   m_ID;
     NodeType m_Type;
     ImRect   m_Bounds;
+    ImRect   m_DrawArea;
     float    m_ZPosition;
     int      m_Channel;
     Pin*     m_LastPin;
@@ -1174,6 +1175,7 @@ struct NodeBuilder
     Pin*  m_CurrentPin;
 
     ImRect m_NodeRect;
+    ImRect m_NodeDrawArea;
 
     ImRect m_PivotRect;
     ImVec2 m_PivotAlignment;
@@ -1318,6 +1320,15 @@ struct EditorContext
     void SetGroupSize(NodeId nodeId, const ImVec2& size);
     ImVec2 GetNodePosition(NodeId nodeId);
     ImVec2 GetNodeSize(NodeId nodeId);
+    inline ImRect GetLastNodeDrawArea()
+    {
+      return m_NodeBuilder.m_NodeDrawArea;
+    }
+
+    inline ImRect GetLastNodeBounds()
+    {
+      return m_NodeBuilder.m_NodeRect;
+    }
 
     void SetNodeZPosition(NodeId nodeId, float z);
     float GetNodeZPosition(NodeId nodeId);

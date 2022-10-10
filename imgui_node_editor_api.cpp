@@ -407,6 +407,16 @@ ImVec2 ax::NodeEditor::GetNodeSize(NodeId nodeId)
     return s_Editor->GetNodeSize(nodeId);
 }
 
+ImVec2 ax::NodeEditor::GetLastNodeDrawArea()
+{
+  return s_Editor->GetLastNodeDrawArea();
+}
+
+ImVec2 ax::NodeEditor::GetLastNodeBounds()
+{
+  return s_Editor->GetLastNodeBounds();
+}
+
 void ax::NodeEditor::CenterNodeOnScreen(NodeId nodeId)
 {
     if (auto node = s_Editor->FindNode(nodeId))
